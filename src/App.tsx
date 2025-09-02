@@ -1,5 +1,14 @@
+import { useState } from "react";
+
 function App() {
-  const nome = " _ _ _ ";
+  const [nome, setNome] = useState(" _ _ _ ");
+  const [valorInput, setValorInput] = useState("");
+
+  function handleEnviar() {
+    if (valorInput) {
+        setNome(valorInput);
+    }
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: 'sans-serif', textAlign: 'center', width: '100vw'}}>
@@ -9,10 +18,12 @@ function App() {
         <input 
           type="text" 
           placeholder="Digite seu nome" 
-          style={{ padding: '8px', marginRight: '10px'}}
+          value={valorInput}
+          onChange={(evento) => setValorInput(evento.target.value)}
+          style={{ padding: '8px', marginRight: '10px' }}
         />
         
-        <button style={{ padding: '8px' }}>
+        <button onClick={handleEnviar} style={{ padding: '8px' }}>
           Enviar
         </button>
       </div>
